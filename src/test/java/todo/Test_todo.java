@@ -11,7 +11,7 @@ public class Test_todo {
 		int a = 2;
 		int b = 1;
 		
-		assertEquals(5, a+b);
+		assertEquals(3, a+b);
 	}
 
 }
