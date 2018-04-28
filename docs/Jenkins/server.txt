@@ -1,0 +1,3 @@
+bulbrange
+*********
+raspid.myftp.org:9090
