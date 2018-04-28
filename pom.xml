@@ -33,6 +33,18 @@
 		    <version>4.12</version>
 		    <scope>test</scope>
 		</dependency>
+				<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.46</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.uml2.uml/editor -->
+		<dependency>
+		    <groupId>org.eclipse.uml2.uml</groupId>
+		    <artifactId>editor</artifactId>
+		    <version>2.1.0-v200706251652</version>
+		</dependency>
+
 	</dependencies>
 
 </project>
