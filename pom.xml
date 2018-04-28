@@ -34,8 +34,12 @@
 		    <scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.eclipse.uml2.uml/editor -->
-
+	<!-- https://mvnrepository.com/artifact/org.eclipse.uml2/org.eclipse.uml2.uml -->
+	<dependency>
+	    <groupId>org.eclipse.uml2</groupId>
+	    <artifactId>org.eclipse.uml2.uml</artifactId>
+	    <version>3.1.0.v201006071150</version>
+	</dependency>
 
 	</dependencies>
 
