@@ -20,7 +20,7 @@ public class DBController {
             // The newInstance() call is a work around for some
             // broken Java implementations
 
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbc.Driver").getDeclaredConstructor().newInstance();
         } catch (Exception ex) {
             // handle the error
         }
@@ -45,7 +45,7 @@ public class DBController {
 			
 		    conn =
 		       DriverManager.getConnection("jdbc:mysql://esberfes.icons.es/icontinua?" +
-		                                   "user=icontinua&password=********");
+		                                   "user=icontinua&password=icontinua");
 
 		    stmt = conn.createStatement();
 		    rs = stmt.executeQuery(query);
