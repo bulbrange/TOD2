@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -34,7 +35,7 @@ public class MainPanel extends JPanel{
 	public MainPanel(){
 		setLayout(null);
 		try{
-			loginBackground = ImageIO.read(new File("img/mainbackground2.jpg"));
+			loginBackground = ImageIO.read(ClassLoader.getSystemClassLoader().getResourceAsStream("mainbackground2.jpg"));
 		}catch(Exception e){
 			System.out.println("Imagen no encontrada");
 		}

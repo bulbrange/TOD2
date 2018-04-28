@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -39,11 +40,11 @@ public class TaskButtonPanel extends JPanel{
 	private ButtonListener listener;
 	
 	public TaskButtonPanel(){
-		
+
 		setLayout(null);
 		
 		try {
-			background = ImageIO.read(new File("img/buttonsbackground.jpg"));
+			background = ImageIO.read(ClassLoader.getSystemClassLoader().getResourceAsStream("buttonsbackground.jpg"));
 		} catch (IOException e) {System.out.println("IMAGE NOT FOUND @ BUTTON PANEL");}
 		
 		createTask = new CreateButton("Create",80,10,MainFrame.device,this);

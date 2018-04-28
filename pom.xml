@@ -6,6 +6,13 @@
   <name>todo</name>
 
   <build>
+    <resources>
+    	<resource>
+    		<directory>
+    			src/main/resources/img/
+    		</directory>
+    	</resource>
+    </resources>
   	<plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

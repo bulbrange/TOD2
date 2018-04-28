@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -41,7 +42,7 @@ public class TaskPanel extends JPanel{
 	public TaskPanel(){
 		
 		try {
-			background = ImageIO.read(new File("img/taskbackground.jpg"));
+			background = ImageIO.read(ClassLoader.getSystemClassLoader().getResourceAsStream("taskbackground.jpg"));
 		} catch (IOException e) {System.out.println("Image not found @ TASK PANEL");}
 		
 		setLayout(null);
