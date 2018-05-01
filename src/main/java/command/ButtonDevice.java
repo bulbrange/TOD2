@@ -124,6 +124,13 @@ public class ButtonDevice implements Actions {
 	}
 
 
+	@Override
+	public void showTask() {
+		System.out.println("TASK BUTTON WORKING");
+		
+	}
+
+
 
 
 

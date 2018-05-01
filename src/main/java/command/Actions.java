@@ -17,4 +17,6 @@ public interface Actions {
 	public void modifyTask();
 	
 	public void exitView();
+	
+	public void showTask();
 }

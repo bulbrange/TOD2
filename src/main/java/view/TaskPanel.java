@@ -30,6 +30,9 @@ public class TaskPanel extends JPanel{
 	private ArrayList<ButtonPattern> buttons;
 	private ButtonListener listener;
 	
+	//AÑADIR ARRAYLIST DE TASK PARA VISUALIZAR OJO QUE DENTRO LLEVA EL BOTON
+	
+	
 	//BUTTON PANEL
 	public static TaskButtonPanel buttonPanel;
 
