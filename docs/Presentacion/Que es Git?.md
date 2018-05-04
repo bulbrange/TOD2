@@ -1,7 +1,7 @@
-# GIT
-<p align="center">
-  Lorem ipsum
-</p>
+
+<h1 align="center">
+GIT
+</h1>
 
 ## ¿Qué es GIT?
 
