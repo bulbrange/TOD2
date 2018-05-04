@@ -124,8 +124,6 @@ Son bugs que surgen en producción, por lo que se deben arreglar y publicar de f
 
 ## Opciones herramientas
 
-##
-
 - GitHub
 - GitLab
 - BitBucket
