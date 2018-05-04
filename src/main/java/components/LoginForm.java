@@ -22,9 +22,6 @@ public class LoginForm extends Form {
 	private RegisterButton register;
 
 	// TESTING USER STRINGS
-	public static String user = "Jander";
-	public static String pass = "1234";
-
 
 	public LoginForm(JPanel view) {
 		super(view);

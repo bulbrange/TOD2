@@ -15,44 +15,16 @@ public class ButtonDevice implements Actions {
 	
 	public void accept() {
 		ArrayList<JTextField> in = new ArrayList<JTextField>();
-		String msgOK = "";
-		String msgKO = "";
-		String title = "";
 
 		if (MainPanel.getInstance().isLoginView()) {
-			System.out.println("LOGGIN BUTTON WORKING");
 			in = MainPanel.getInstance().getLogin().getInputs();
-			msgOK = "<html><body>Greetings ";
-			msgKO = "Access denied...";
-			title = "Login";
-			for (Object o : getData("select * from test2", "col1")) {
-				System.out.println(o.toString());
-			}
+			initLoginProtocol(in);
 
 		} else if (MainPanel.getInstance().isRegisterView()) {
-			System.out.println("REGISTER BUTTON WORKING");
 			in = MainPanel.getInstance().getRegister().getInputs();
-			msgOK = "<html><body>---NEW USER---<br>";
-			msgKO = "Incomplete or wrong form...";
-			title = "Register form";
-		}
+			initRegisterProtocol(in);
 
-		for (JTextField f : in) {
-			System.out.println(f.getText());
 		}
-
-		FormValidator validator = new FormValidator(in);
-		if (validator.validate()) {
-			JOptionPane.showMessageDialog(null, msgOK + validator.toString(), title, 1);
-			if (MainPanel.getInstance().isRegisterView()) {
-				resetComponents(false);
-			} else {
-				MainFrame.switchView();
-			}
-		} else {
-			JOptionPane.showMessageDialog(null, msgKO, title, 0);
-		}
-
 	}
 
 	
@@ -112,27 +84,34 @@ public class ButtonDevice implements Actions {
 		}
 	}
 
-	public ArrayList<Object> getData(String query, String columnName) {
-		ArrayList<Object> data = new ArrayList<Object>();
-		try {
-			data = DBController.getInstance().query(query, columnName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		;
-		return data;
-	}
-
-
 	@Override
 	public void showTask() {
 		System.out.println("TASK BUTTON WORKING");
 		
 	}
-
-
-
-
-
+	
+	private void initLoginProtocol(ArrayList<JTextField> input){
+		
+		if(new FormValidator(input).validateUser()){
+			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
+			MainFrame.switchView();
+		}
+	}
+	
+	private void initRegisterProtocol(ArrayList<JTextField> input){
+		
+		if(new FormValidator(input).validateRegister()){
+			String mail = input.get(0).getText();
+			String pass = input.get(1).getText();
+			String user = input.get(3).getText();
+			
+			DBController.getInstance().insertIntoPersona(user, mail, pass);
+			resetComponents(false);
+			String welcomeMsg = "<html><body>REGISTER SUCCESFULL!!<br><br>Welcome " 
+								+ user + "<br><br>To log in you must use your mail:<br>"
+								+ mail;
+			JOptionPane.showMessageDialog(null, welcomeMsg);
+		}
+	}
 
 }

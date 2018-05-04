@@ -12,13 +12,15 @@ public class Task {
 	private String title;
 	private String description;
 	private TaskButton displayInfo;
+	private State state;
 	
-	public Task(Calendar start, Calendar end, Calendar creation, String title, String description){
+	public Task(String title, String description, Calendar creation, Calendar start, Calendar end){
 		this.start = start;
 		this.end = end;
 		this.creation = creation;
 		this.title = title;
 		this.description = description;
+		this.state = State.Pendiente;
 		
 	}
 
@@ -82,6 +84,17 @@ public class Task {
 	public void setDisplayInfo(TaskButton displayInfo) {
 		this.displayInfo = displayInfo;
 	}
-	
+	public void switchState(){
+		if(state == State.Pendiente) state = State.Finalizada;
+		else state = State.Pendiente;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
 
 }
