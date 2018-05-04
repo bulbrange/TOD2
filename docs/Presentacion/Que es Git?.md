@@ -1,5 +1,7 @@
 # GIT
-
+<p align="justify">
+  Lorem ipsum
+</p>
 
 ## ¿Qué es GIT?
 
