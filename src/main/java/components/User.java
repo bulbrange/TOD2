@@ -1,5 +1,6 @@
 package components;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import buttons.TaskButton;
@@ -81,6 +82,7 @@ public class User {
 										tasks.get(i),
 										this));
 			taskButtons.add(tasks.get(i).getDisplayInfo());
+			if(tasks.get(i).getState().toString() == "Finalizada") taskButtons.get(i).setBackground(Color.CYAN);
 		}
 		taskListener = new ButtonListener(taskButtons);
 	}

@@ -37,15 +37,12 @@ public class ButtonDevice implements Actions {
 		if (MainPanel.getInstance().isRegisterView()) {
 			resetComponents(false);
 		}
-
 	}
 
 	
 	public void register() {
 		resetComponents(true);
-
 	}
-	
 	
 	public void createTask(User user) {
 		try{
@@ -77,6 +74,19 @@ public class ButtonDevice implements Actions {
 	
 	public void finishTask(User user) {
 		System.out.println("FINISH TASK WORKING");
+		for(int i = 0; i < user.getTasks().size(); i++){
+			if(user.getTasks().get(i).isSelected()){
+				int answer = JOptionPane.showConfirmDialog(null, "Do you want to finish the task?");
+				if(answer == 0){
+					TextPanePanel.area.setText("");
+					DBController.getInstance().finishTarea(user.getTasks().get(i).getID());
+					JOptionPane.showMessageDialog(null, "Congratulations!!!! Your task is now finised");
+					deleteTask(user);
+				}
+				updateView(user);
+				break;
+			}
+		}
 		
 	}
 
@@ -120,6 +130,9 @@ public class ButtonDevice implements Actions {
 			if(u.getTasks().get(i) == task){
 				u.getTasks().get(i).setSelected(true);
 				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
+			}else if(u.getTasks().get(i).getState().toString() == "Finalizada"){
+				u.getTasks().get(i).setSelected(false);
+				u.getTasks().get(i).getDisplayInfo().setBackground(Color.CYAN);
 			}else{
 				u.getTasks().get(i).setSelected(false);
 				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
