@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ViewTest {
 
 	
-	@Test
+	/*@Test
 	public void mainFrameTest() {
 		MainFrame f = new MainFrame();
 		
