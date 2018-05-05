@@ -74,21 +74,21 @@ public class ControllerTest {
 			}
 		
 		
-		@Test
+		/*@Test
 		public void DBcontrollerTest() throws Exception {
 			String clumnMail = "Mail";
 			String qSelectPers = "SELECT" + clumnMail + "FROM Persona" ;
 			assertNotNull(DBController.getInstance().query(qSelectPers, clumnMail));
 						
-		}
+		}*/
 		
-		@Test
+		/*@Test
 		public void DBcontrollerTest2() throws Exception {
 			String clumnMail = "Email";
 			String qSelectPers = "SELECT Email FROM Persona" ;
 			assertNotNull(DBController.getInstance().query(qSelectPers, clumnMail));
 						
-		}
+		}*/
 		
 		
 		
