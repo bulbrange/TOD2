@@ -134,6 +134,8 @@ public class ButtonDevice implements Actions {
 			//TaskButtonPanel.buttons.get(1).
 			//MainFrame.switchView();
 			//AKI KAI KIASK IDAS
+			
+			//TROLLLER
 		}
 	}
 	
