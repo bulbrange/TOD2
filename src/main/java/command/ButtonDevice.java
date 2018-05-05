@@ -134,11 +134,6 @@ public class ButtonDevice implements Actions {
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			MainFrame.switchView();
 
-
-			
-			MainFrame.switchView();
-			System.out.println("ALKSJDHALKSJD");
-
 		}
 	}
 	
