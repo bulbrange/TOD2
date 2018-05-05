@@ -1,6 +1,7 @@
 package command;
 
 import components.Task;
+import components.User;
 
 public interface Actions {
 
@@ -10,7 +11,7 @@ public interface Actions {
 	
 	public void register();
 	
-	public void createTask(String userID);
+	public void createTask(User user);
 	
 	public void deleteTask();
 	

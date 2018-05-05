@@ -18,7 +18,7 @@ public class CreateButton extends ButtonPattern{
 
 	
 	public void execute() {
-		device.createTask(u.getID());
+		device.createTask(u);
 	}
 
 	public User getU() {

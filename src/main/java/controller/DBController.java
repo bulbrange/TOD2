@@ -99,7 +99,7 @@ public class DBController {
 	}
 	
 	public void insertIntoTarea(String userID, String title, String decription, String date_init, String date_end){
-		String query = "INSERT INTO Tarea (ID_persona,Titulo,Descricion,Fecha_ini,Fecha_fin) values (?,?,?,?,?)";
+		String query = "INSERT INTO Tarea (ID_persona,Titulo,Descripcion,Fecha_ini,Fecha_fin) values (?,?,?,?,?)";
 		try (Connection conn = this.connect();
 				
 	            PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)) {
