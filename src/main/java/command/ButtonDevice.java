@@ -132,7 +132,7 @@ public class ButtonDevice implements Actions {
 		if(new FormValidator(input).validateUser()){
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			//TaskButtonPanel.buttons.get(1).
-			//MainFrame.switchView();
+			MainFrame.switchView();
 			//AKI KAI KIASK IDAS
 			
 			//TROLLLER
