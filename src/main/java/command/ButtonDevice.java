@@ -1,58 +1,35 @@
 package command;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import components.Task;
+import components.TextPanePanel;
+import components.User;
 import controller.DBController;
 import controller.FormValidator;
 import view.MainFrame;
 import view.MainPanel;
+import view.TaskPanel;
 
 public class ButtonDevice implements Actions {
 
 	
 	public void accept() {
 		ArrayList<JTextField> in = new ArrayList<JTextField>();
-		String msgOK = "";
-		String msgKO = "";
-		String title = "";
 
 		if (MainPanel.getInstance().isLoginView()) {
-			System.out.println("LOGGIN BUTTON WORKING");
 			in = MainPanel.getInstance().getLogin().getInputs();
-			msgOK = "<html><body>Greetings ";
-			msgKO = "Access denied...";
-			title = "Login";
-			for (Object o : getData("select * from test2", "col1")) {
-				System.out.println(o.toString());
-			}
+			initLoginProtocol(in);
 
 		} else if (MainPanel.getInstance().isRegisterView()) {
-			System.out.println("REGISTER BUTTON WORKING");
 			in = MainPanel.getInstance().getRegister().getInputs();
-			msgOK = "<html><body>---NEW USER---<br>";
-			msgKO = "Incomplete or wrong form...";
-			title = "Register form";
-		}
+			initRegisterProtocol(in);
 
-		for (JTextField f : in) {
-			System.out.println(f.getText());
 		}
-
-		FormValidator validator = new FormValidator(in);
-		if (validator.validate()) {
-			JOptionPane.showMessageDialog(null, msgOK + validator.toString(), title, 1);
-			if (MainPanel.getInstance().isRegisterView()) {
-				resetComponents(false);
-			} else {
-				MainFrame.switchView();
-			}
-		} else {
-			JOptionPane.showMessageDialog(null, msgKO, title, 0);
-		}
-
 	}
 
 	
@@ -70,9 +47,18 @@ public class ButtonDevice implements Actions {
 	}
 	
 	
-	public void createTask() {
-		System.out.println("CREATE TASK WORKING");
-		
+	public void createTask(String userID) {
+		System.out.println("BUTTON CREATE WOOOOOORKING");
+		try{
+			String title = getInput("Insert title please:");
+			String description = getInput("Insert description please:");
+			String date_init = getInput("Insert starting date please (YYYY-MM-DD):");
+			String date_end = getInput("Insert ending date please(YYYY-MM-DD):");
+			
+			DBController.getInstance().insertIntoTarea(userID, title, description, date_init, date_end);
+		}catch(NullPointerException e){
+			JOptionPane.showMessageDialog(null, "Operation cancelled", "Operation cancelled", 0);
+		}
 	}
 	
 	public void deleteTask() {
@@ -112,20 +98,66 @@ public class ButtonDevice implements Actions {
 		}
 	}
 
-	public ArrayList<Object> getData(String query, String columnName) {
-		ArrayList<Object> data = new ArrayList<Object>();
-		try {
-			data = DBController.getInstance().query(query, columnName);
-		} catch (Exception e) {
-			e.printStackTrace();
+	@Override
+	public void showTask(Task task) {
+		TextPanePanel.area.setText("");
+		TextPanePanel.area.setText(task.getTitle()+"\tESTADO:  " + task.getState() +"\n\n");
+		TextPanePanel.area.setText(TextPanePanel.area.getText() + "FECHA DE INICIO: " + task.getStart() + "\n");
+		TextPanePanel.area.setText(TextPanePanel.area.getText() + "FECHA DE FIN: " + task.getEnd() + "\n\n");
+		TextPanePanel.area.setText(TextPanePanel.area.getText() + "DESCRIPCION:\n\n");
+		TextPanePanel.area.setText(TextPanePanel.area.getText() + task.getDescription() + "\n");
+		User u = task.getDisplayInfo().getUser();
+		for(int i = 0; i < u.getTasks().size(); i++){
+			if(u.getTasks().get(i) == task) u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
+			else u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
 		}
-		;
-		return data;
+		
 	}
-
-
-
-
-
-
+	
+	private void initLoginProtocol(ArrayList<JTextField> input){
+		
+		if(new FormValidator(input).validateUser()){
+			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
+			
+			MainFrame.switchView();
+		}
+	}
+	
+	private void initRegisterProtocol(ArrayList<JTextField> input){
+		
+		if(new FormValidator(input).validateRegister()){
+			String mail = input.get(0).getText();
+			String pass = input.get(1).getText();
+			String user = input.get(3).getText();
+			
+			DBController.getInstance().insertIntoPersona(user, mail, pass);
+			resetComponents(false);
+			String welcomeMsg = "<html><body>REGISTER SUCCESFULL!!<br><br>Welcome " 
+								+ user + "<br><br>To log in you must use your mail:<br>"
+								+ mail;
+			JOptionPane.showMessageDialog(null, welcomeMsg);
+		}
+	}
+	private String getInput(String title){
+		
+		String input = "";
+		
+			while(input.equals("")){
+				input = JOptionPane.showInputDialog(null, title);
+				if(input.equals("")) JOptionPane.showMessageDialog(null, "Can´t handle empty input...", "Task creation failure", 0);
+				if(title.contains("date")){
+					if (!input.matches("\\d{4}-\\d{2}-\\d{2}")) {
+						JOptionPane.showMessageDialog(null, "Wrong date regex, must be (YYYY-MM-DD)", "Task creation failure", 0);
+						input = "";
+					}
+				}
+				
+					
+				
+	
+			}
+		
+		return input;
+		
+	}
 }

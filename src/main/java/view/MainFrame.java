@@ -58,6 +58,8 @@ public class MainFrame extends JFrame {
 	
 	public static void switchView(){
 		CardLayout cl = (CardLayout)container.getLayout();
+		//System.out.println(container.get);
+		
 		cl.next(container);
 	}
 	public static MainFrame getInstance(){

@@ -15,6 +15,7 @@ import buttons.ExitButton;
 import command.ButtonPattern;
 import components.TaskButtonPanel;
 import components.TextPanePanel;
+import components.User;
 import listeners.ButtonListener;
 
 public class TaskPanel extends JPanel{
@@ -30,11 +31,15 @@ public class TaskPanel extends JPanel{
 	private ArrayList<ButtonPattern> buttons;
 	private ButtonListener listener;
 	
+	//AÑADIR ARRAYLIST DE TASK PARA VISUALIZAR OJO QUE DENTRO LLEVA EL BOTON
+	
 	//BUTTON PANEL
 	public static TaskButtonPanel buttonPanel;
 
 	private Image background;
 	
+	//USER
+	public static User user;
 	
 	//SINGLETON
 	private static TaskPanel panel;
@@ -79,5 +84,13 @@ public class TaskPanel extends JPanel{
 			TaskPanel.panel = new TaskPanel();
 		}
 		return TaskPanel.panel;
+	}
+
+	public TextPanePanel getDescription() {
+		return description;
+	}
+
+	public void setDescription(TextPanePanel description) {
+		this.description = description;
 	}
 }
