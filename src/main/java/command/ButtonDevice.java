@@ -134,6 +134,11 @@ public class ButtonDevice implements Actions {
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			MainFrame.switchView();
 
+
+			
+			MainFrame.switchView();
+			System.out.println("ALKSJDHALKSJD");
+
 		}
 	}
 	
@@ -178,7 +183,10 @@ public class ButtonDevice implements Actions {
 		user.setTasks();
 		TaskPanel.getInstance().repaint();
 	}
+
 	private void cleanView(User user){
+		TextPanePanel.area.setText("");
+
 		for(int i = 0; i < user.getTasks().size(); i++){
 			TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
 		}
