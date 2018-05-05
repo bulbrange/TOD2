@@ -34,14 +34,14 @@ public class ControllerTest {
 			inputs.add(repass);
 			
 			FormValidator validator = new FormValidator(inputs);
-			System.out.println(validator.validate());
+			System.out.println(validator.validateRegister());
 			
 			for(JTextField p : inputs){
 				System.out.println("TEST INPUTS : " + p.getText());
 			}
 			
 			System.out.println("Same ");
-			assertTrue(validator.validate());
+			assertTrue(validator.validateRegister());
 		}
 		
 		@Test
@@ -64,7 +64,13 @@ public class ControllerTest {
 				paco.add(j3);
 				paco.add(j4);
 				FormValidator f = new FormValidator(paco);
-				assertTrue(f.validate());
+				assertTrue(f.validateRegister());
+				
+				/*ArrayList<JTextField> antonio = new ArrayList<JTextField>();
+				antonio.add(j1);
+				antonio.add(j2);				
+				FormValidator f2 = new FormValidator(antonio);				
+				assertTrue(f.validateUser());*/
 			}
 		
 		
