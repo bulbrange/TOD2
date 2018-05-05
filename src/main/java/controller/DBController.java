@@ -98,14 +98,14 @@ public class DBController {
 	        }
 	}
 	
-	public void insertIntoTarea(String userID, String title, String decription, String date_init, String date_end){
+	public void insertIntoTarea(String userID, String title, String description, String date_init, String date_end){
 		String query = "INSERT INTO Tarea (ID_persona,Titulo,Descripcion,Fecha_ini,Fecha_fin) values (?,?,?,?,?)";
 		try (Connection conn = this.connect();
 				
 	            PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)) {
 	            pstmt.setString(1, userID);
 	            pstmt.setString(2, title);
-	            pstmt.setString(3, decription);
+	            pstmt.setString(3, description);
 	            pstmt.setString(4, date_init);
 	            pstmt.setString(5, date_end);
 	            pstmt.executeUpdate();
@@ -140,5 +140,20 @@ public class DBController {
 				System.out.println(e.getMessage());
 				JOptionPane.showMessageDialog(null, "Some problem occurred with Data Base... try later", "Data Base problem", 0);	
 			}
+	}
+	public void modifyTarea(String taskID, String title, String description, String date_init, String date_end){
+		String query = "UPDATE Tarea SET Titulo='" 
+				+ title + "', Descripcion='" 
+				+ description + "', Fecha_ini='" 
+				+ date_init + "', Fecha_fin='"
+				+ date_end + "' WHERE ID=" + taskID;
+		try(Connection conn = this.connect();
+				PreparedStatement pstmt = (PreparedStatement)conn.prepareStatement(query)){
+				pstmt.executeUpdate();
+				conn.close();
+		}catch (SQLException e){
+			System.out.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "Some problem occurred with Data Base... try later", "Data Base problem", 0);
+		}
 	}
 }
