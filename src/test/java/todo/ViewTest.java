@@ -35,10 +35,10 @@ public class ViewTest {
 	 	assertNotNull(p.isRegisterView());	 	
 	}
 	
-	@Test
+	/*@Test
 	public void taskPanelTest() {
 		assertNotNull(TaskPanel.buttonPanel);		
 
-	}
+	}*/
 
 }
