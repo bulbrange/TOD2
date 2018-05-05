@@ -4,19 +4,30 @@ import javax.swing.JPanel;
 
 import command.ButtonDevice;
 import command.ButtonPattern;
+import components.User;
 
 public class FinishButton extends ButtonPattern{
 
 	private static final long serialVersionUID = 1L;
-
-	public FinishButton(String title, int x, int y, ButtonDevice device, JPanel view) {
+	private User user;
+	public FinishButton(String title, int x, int y, ButtonDevice device, JPanel view, User user) {
 		super(title, x, y, device, view);
-		// TODO Auto-generated constructor stub
+		this.user = user;
 	}
 
 	
 	public void execute() {
-		device.finishTask();
+		device.finishTask(user);
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
