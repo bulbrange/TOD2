@@ -136,6 +136,7 @@ public class ButtonDevice implements Actions {
 			//AKI KAI KIASK IDAS
 			
 			//TROLLLER
+			System.out.println("ALKSJDHALKSJD");
 		}
 	}
 	
