@@ -1,5 +1,7 @@
 package command;
 
+import components.Task;
+
 public interface Actions {
 
 	public void accept();
@@ -8,7 +10,7 @@ public interface Actions {
 	
 	public void register();
 	
-	public void createTask();
+	public void createTask(String userID);
 	
 	public void deleteTask();
 	
@@ -17,6 +19,6 @@ public interface Actions {
 	public void modifyTask();
 	
 	public void exitView();
-	
-	public void showTask();
+
+	void showTask(Task task);
 }

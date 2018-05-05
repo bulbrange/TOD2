@@ -18,6 +18,7 @@ import buttons.ModifyButton;
 import command.ButtonPattern;
 import listeners.ButtonListener;
 import view.MainFrame;
+import view.TaskPanel;
 
 public class TaskButtonPanel extends JPanel{
 
@@ -47,7 +48,7 @@ public class TaskButtonPanel extends JPanel{
 			background = ImageIO.read(ClassLoader.getSystemClassLoader().getResourceAsStream("buttonsbackground.jpg"));
 		} catch (IOException e) {System.out.println("IMAGE NOT FOUND @ BUTTON PANEL");}
 		
-		createTask = new CreateButton("Create",80,10,MainFrame.device,this);
+		createTask = new CreateButton("Create",80,10,MainFrame.device,this, TaskPanel.user);
 		deleteTask = new DeleteButton("Delete",240,10,MainFrame.device,this);
 		finishTask = new FinishButton("Finish",440,10,MainFrame.device,this);
 		modifyTask = new ModifyButton("Modify",600,10,MainFrame.device,this);
@@ -73,6 +74,38 @@ public class TaskButtonPanel extends JPanel{
 		super.paintComponent(g);
 		
 		g.drawImage(background, 0, 0, null);
+	}
+
+	public CreateButton getCreateTask() {
+		return createTask;
+	}
+
+	public void setCreateTask(CreateButton createTask) {
+		this.createTask = createTask;
+	}
+
+	public DeleteButton getDeleteTask() {
+		return deleteTask;
+	}
+
+	public void setDeleteTask(DeleteButton deleteTask) {
+		this.deleteTask = deleteTask;
+	}
+
+	public FinishButton getFinishTask() {
+		return finishTask;
+	}
+
+	public void setFinishTask(FinishButton finishTask) {
+		this.finishTask = finishTask;
+	}
+
+	public ModifyButton getModifyTask() {
+		return modifyTask;
+	}
+
+	public void setModifyTask(ModifyButton modifyTask) {
+		this.modifyTask = modifyTask;
 	}
 }
 

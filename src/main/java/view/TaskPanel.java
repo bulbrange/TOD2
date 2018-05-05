@@ -39,7 +39,7 @@ public class TaskPanel extends JPanel{
 	private Image background;
 	
 	//USER
-	private User user;
+	public static User user;
 	
 	//SINGLETON
 	private static TaskPanel panel;
@@ -84,5 +84,13 @@ public class TaskPanel extends JPanel{
 			TaskPanel.panel = new TaskPanel();
 		}
 		return TaskPanel.panel;
+	}
+
+	public TextPanePanel getDescription() {
+		return description;
+	}
+
+	public void setDescription(TextPanePanel description) {
+		this.description = description;
 	}
 }

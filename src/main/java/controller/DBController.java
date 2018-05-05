@@ -2,14 +2,16 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
-import java.sql.ResultSet;
+import com.mysql.jdbc.PreparedStatement;
+
+
+
 
 public class DBController {
 
@@ -82,10 +84,10 @@ public class DBController {
 		
 	}
 	public void insertIntoPersona(String name, String mail, String pass) {
-	        String sql = "INSERT INTO Persona(Nombre,Email,Pass) VALUES(?,?,?)";
+	        String query = "INSERT INTO Persona(Nombre,Email,Pass) VALUES(?,?,?)";
 	 
 	        try (Connection conn = this.connect();
-	            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	            PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)) {
 	            pstmt.setString(1, name);
 	            pstmt.setString(2, mail);
 	            pstmt.setString(3, pass);
@@ -94,5 +96,23 @@ public class DBController {
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
-	    }
+	}
+	
+	public void insertIntoTarea(String userID, String title, String decription, String date_init, String date_end){
+		String query = "INSERT INTO Tarea (ID_persona,Titulo,Descricion,Fecha_ini,Fecha_fin) values (?,?,?,?,?)";
+		try (Connection conn = this.connect();
+				
+	            PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)) {
+	            pstmt.setString(1, userID);
+	            pstmt.setString(2, title);
+	            pstmt.setString(3, decription);
+	            pstmt.setString(4, date_init);
+	            pstmt.setString(5, date_end);
+	            pstmt.executeUpdate();
+	            
+	            conn.close();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	}
 }

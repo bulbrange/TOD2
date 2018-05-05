@@ -1,62 +1,58 @@
 package components;
 
-import java.util.Calendar;
-
 import buttons.TaskButton;
 
 public class Task {
 	
-	private Calendar start;
-	private Calendar end;
-	private Calendar creation;
+	private String start;
+	private String end;
 	private String title;
 	private String description;
 	private TaskButton displayInfo;
 	private State state;
+	private boolean selected = false;
 	
-	public Task(String title, String description, Calendar creation, Calendar start, Calendar end){
-		this.start = start;
-		this.end = end;
-		this.creation = creation;
+	public Task(String title, String description){
+
 		this.title = title;
 		this.description = description;
+		
+	}
+	public Task(){
+		this.start = null;
+		this.end = null;
+		this.title = "";
+		this.description = "";
+		this.displayInfo = null;
 		this.state = State.Pendiente;
 		
 	}
 
 	public String toString(){
-		return this.title + "\nFECHA DE COMIENZO: " + this.start.toString() + "\nFECHA DE FIN: " + this.end.toString() + "\n" + this.description;
+		return this.title + "\nFECHA DE COMIENZO: " 
+				+ this.start.toString() + "\nFECHA DE FIN: " 
+				+ this.end.toString() + "\n" + this.description
+				+ "\n" + this.state;
 	}
 
-	public Calendar getStart() {
+	public String getStart() {
 		return start;
 	}
 
 
-	public void setStart(Calendar start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
 
 
-	public Calendar getEnd() {
+	public String getEnd() {
 		return end;
 	}
 
 
-	public void setEnd(Calendar end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
-
-
-	public Calendar getCreation() {
-		return creation;
-	}
-
-
-	public void setCreation(Calendar creation) {
-		this.creation = creation;
-	}
-
 
 	public String getTitle() {
 		return title;
@@ -93,8 +89,15 @@ public class Task {
 		return state;
 	}
 
-	public void setState(State state) {
-		this.state = state;
+	public void setState(String state) {
+		if(state.equals(State.Pendiente.name())) this.state = State.Pendiente;
+		else this.state = State.Finalizada;
+	}
+	public boolean isSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 }

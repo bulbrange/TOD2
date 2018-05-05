@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import components.User;
+import view.TaskPanel;
+
 public class FormValidator {
 	
 	private ArrayList<JTextField> inputs;
@@ -35,6 +38,7 @@ public class FormValidator {
 	public boolean validateUser(){
 		String mail = inputs.get(0).getText();
 		String pass = inputs.get(1).getText();
+		String ID = "";
 		try {
 			String query = "SELECT Email FROM Persona WHERE Email='" + mail + "'";
 			ArrayList<Object> user = DBController.getInstance().query(query, "Email");
@@ -49,11 +53,16 @@ public class FormValidator {
 				JOptionPane.showMessageDialog(null, "Invalid password...", "Loggin issue", 0);
 				return false;
 			}
-
+			String query3 = "SELECT ID FROM Persona WHERE Email='" + mail + "'";
+			user = DBController.getInstance().query(query3, "ID");
+			ID = user.get(0).toString();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		TaskPanel.user = new User(ID, mail, pass);
+		TaskPanel.buttonPanel.getCreateTask().setU(TaskPanel.user);
 		return true;
 	}
 
