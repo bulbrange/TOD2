@@ -47,7 +47,7 @@ public class ButtonDevice implements Actions {
 	}
 	
 	
-	public void createTask(String userID) {
+	public void createTask(User user) {
 		System.out.println("BUTTON CREATE WOOOOOORKING");
 		try{
 			String title = getInput("Insert title please:");
@@ -55,7 +55,13 @@ public class ButtonDevice implements Actions {
 			String date_init = getInput("Insert starting date please (YYYY-MM-DD):");
 			String date_end = getInput("Insert ending date please(YYYY-MM-DD):");
 			
-			DBController.getInstance().insertIntoTarea(userID, title, description, date_init, date_end);
+			DBController.getInstance().insertIntoTarea(user.getID(), title, description, date_init, date_end);
+			for(int i = 0; i < user.getTasks().size(); i++){
+				TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
+			}
+			user.setTasks();
+			TaskPanel.getInstance().repaint();
+			
 		}catch(NullPointerException e){
 			JOptionPane.showMessageDialog(null, "Operation cancelled", "Operation cancelled", 0);
 		}
@@ -108,8 +114,15 @@ public class ButtonDevice implements Actions {
 		TextPanePanel.area.setText(TextPanePanel.area.getText() + task.getDescription() + "\n");
 		User u = task.getDisplayInfo().getUser();
 		for(int i = 0; i < u.getTasks().size(); i++){
-			if(u.getTasks().get(i) == task) u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
-			else u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
+			if(u.getTasks().get(i) == task){
+				System.out.println("Misma task");
+				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
+			}
+			else{
+				
+				System.out.println("Otra task");
+				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
+			}
 		}
 		
 	}

@@ -93,4 +93,8 @@ public class TaskPanel extends JPanel{
 	public void setDescription(TextPanePanel description) {
 		this.description = description;
 	}
+	
+	public void update(){
+		this.repaint();
+	}
 }

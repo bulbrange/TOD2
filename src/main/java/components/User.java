@@ -27,13 +27,10 @@ public class User {
 		this.ID = ID;
 		this.name = name;
 		this.pass = pass;
-		System.out.println(this.ID);
-		System.out.println(this.name);
-		System.out.println(this.pass);
 		setTasks();
 	}
 	
-	private void setTasks(){
+	public void setTasks(){
 		tasks = new ArrayList<Task>();
 		String queryLength = "SELECT * FROM Tarea WHERE ID_persona=" + ID;
 		String queryTitulo = "SELECT Titulo FROM Tarea WHERE ID_persona=" + ID;
@@ -75,7 +72,7 @@ public class User {
 		}
 		ArrayList<ButtonPattern> taskButtons = new ArrayList<ButtonPattern>();
 		for(int i = 0; i < tasks.size(); i++){
-			
+			System.out.println();
 			tasks.get(i).setDisplayInfo(new TaskButton(
 										tasks.get(i).getTitle(),
 										100,
