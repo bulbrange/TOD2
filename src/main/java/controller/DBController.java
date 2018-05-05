@@ -115,4 +115,16 @@ public class DBController {
 	            System.out.println(e.getMessage());
 	        }
 	}
+	
+	public void removeFromTarea(String taskID){
+		String query = "DELETE FROM Tarea WHERE ID="+taskID;
+		
+		try (Connection conn = this.connect();
+	            PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)) {
+	            pstmt.executeUpdate();
+	            conn.close();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	}
 }

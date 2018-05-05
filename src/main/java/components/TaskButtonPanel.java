@@ -49,7 +49,7 @@ public class TaskButtonPanel extends JPanel{
 		} catch (IOException e) {System.out.println("IMAGE NOT FOUND @ BUTTON PANEL");}
 		
 		createTask = new CreateButton("Create",80,10,MainFrame.device,this, TaskPanel.user);
-		deleteTask = new DeleteButton("Delete",240,10,MainFrame.device,this);
+		deleteTask = new DeleteButton("Delete",240,10,MainFrame.device,this, TaskPanel.user);
 		finishTask = new FinishButton("Finish",440,10,MainFrame.device,this);
 		modifyTask = new ModifyButton("Modify",600,10,MainFrame.device,this);
 		

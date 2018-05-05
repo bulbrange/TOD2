@@ -13,7 +13,7 @@ public interface Actions {
 	
 	public void createTask(User user);
 	
-	public void deleteTask();
+	public void deleteTask(User user);
 	
 	public void finishTask();
 	

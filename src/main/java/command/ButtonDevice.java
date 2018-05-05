@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import components.Task;
+import components.TaskButtonPanel;
 import components.TextPanePanel;
 import components.User;
 import controller.DBController;
@@ -56,19 +57,24 @@ public class ButtonDevice implements Actions {
 			String date_end = getInput("Insert ending date please(YYYY-MM-DD):");
 			
 			DBController.getInstance().insertIntoTarea(user.getID(), title, description, date_init, date_end);
-			for(int i = 0; i < user.getTasks().size(); i++){
-				TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
-			}
-			user.setTasks();
-			TaskPanel.getInstance().repaint();
+			//AKI
+			updateView(user);
 			
 		}catch(NullPointerException e){
 			JOptionPane.showMessageDialog(null, "Operation cancelled", "Operation cancelled", 0);
 		}
 	}
 	
-	public void deleteTask() {
-		System.out.println("DELETE TASK WORKING");
+	public void deleteTask(User user) {
+		for(int i = 0; i < user.getTasks().size(); i++){
+			if(user.getTasks().get(i).isSelected()){
+				int answer = JOptionPane.showConfirmDialog(null, "Do you want to remove the task?");
+				System.out.println(answer);
+				//DBController.getInstance().removeFromTarea(user.getTasks().get(i).getID());
+				break;
+			}
+		}
+		//updateView(user);
 		
 	}
 
@@ -114,15 +120,9 @@ public class ButtonDevice implements Actions {
 		TextPanePanel.area.setText(TextPanePanel.area.getText() + task.getDescription() + "\n");
 		User u = task.getDisplayInfo().getUser();
 		for(int i = 0; i < u.getTasks().size(); i++){
-			if(u.getTasks().get(i) == task){
-				System.out.println("Misma task");
-				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
-			}
-			else{
-				
-				System.out.println("Otra task");
-				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
-			}
+			if(u.getTasks().get(i) == task) u.getTasks().get(i).getDisplayInfo().setBackground(Color.GREEN);
+			else u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
+			
 		}
 		
 	}
@@ -131,8 +131,9 @@ public class ButtonDevice implements Actions {
 		
 		if(new FormValidator(input).validateUser()){
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
-			
-			MainFrame.switchView();
+			//TaskButtonPanel.buttons.get(1).
+			//MainFrame.switchView();
+			//AKI KAI KIASK IDAS
 		}
 	}
 	
@@ -164,13 +165,17 @@ public class ButtonDevice implements Actions {
 						input = "";
 					}
 				}
-				
-					
-				
 	
 			}
 		
 		return input;
 		
+	}
+	private void updateView(User user){
+		for(int i = 0; i < user.getTasks().size(); i++){
+			TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
+		}
+		user.setTasks();
+		TaskPanel.getInstance().repaint();
 	}
 }

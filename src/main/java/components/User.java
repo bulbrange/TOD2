@@ -41,7 +41,7 @@ public class User {
 		try {
 			ArrayList<Object> length = DBController.getInstance().query(queryLength, "ID");
 			for(int i = 0; i < length.size(); i++){
-				Task t = new Task();
+				Task t = new Task(length.get(i).toString());
 				tasks.add(t);
 			}
 			ArrayList<Object> titles = DBController.getInstance().query(queryTitulo, "Titulo");

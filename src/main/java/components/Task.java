@@ -3,7 +3,7 @@ package components;
 import buttons.TaskButton;
 
 public class Task {
-	
+	private String ID;
 	private String start;
 	private String end;
 	private String title;
@@ -18,7 +18,17 @@ public class Task {
 		this.description = description;
 		
 	}
+	public Task(String ID){
+		this.ID = ID;
+		this.start = null;
+		this.end = null;
+		this.title = "";
+		this.description = "";
+		this.displayInfo = null;
+		this.state = State.Pendiente;
+	}
 	public Task(){
+		this.ID = "";
 		this.start = null;
 		this.end = null;
 		this.title = "";
@@ -98,6 +108,12 @@ public class Task {
 	}
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 
 }
