@@ -66,16 +66,9 @@ public class ButtonDevice implements Actions {
 	}
 	
 	public void deleteTask(User user) {
-		/*for(int i = 0; i < user.getTasks().size(); i++){
-			if(user.getTasks().get(i).isSelected()){
-				int answer = JOptionPane.showConfirmDialog(null, "Do you want to remove the task?");
-				System.out.println(answer);
-				//DBController.getInstance().removeFromTarea(user.getTasks().get(i).getID());
-				break;
-			}
-		}*/
-		System.out.println("DELETE TASK WORKING");
-		//updateView(user);
+
+		System.out.println("DELETE TASK WORKINGGG");
+
 		
 	}
 
