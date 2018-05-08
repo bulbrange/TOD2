@@ -152,18 +152,10 @@ public class ButtonDevice implements Actions {
 				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
 			}
 		}
-<<<<<<< HEAD
 		
 	}
 	
-	private void initLoginProtocol(ArrayList<JTextField> input){
-		
-		if(new FormValidator(input).validateUser()){
-			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
-			MainFrame.switchView();
 
-=======
-	}
 
 	private void initLoginProtocol(ArrayList<JTextField> input) {
 
@@ -171,7 +163,6 @@ public class ButtonDevice implements Actions {
 			JOptionPane.showMessageDialog(null,
 					"<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			MainFrame.switchView();
->>>>>>> ModifyTaskFunctionality
 		}
 	}
 
@@ -220,16 +211,10 @@ public class ButtonDevice implements Actions {
 		TaskPanel.getInstance().repaint();
 	}
 
-<<<<<<< HEAD
-	private void cleanView(User user){
-		TextPanePanel.area.setText("");
 
-		for(int i = 0; i < user.getTasks().size(); i++){
-=======
 	private void cleanView(User user) {
 		TextPanePanel.area.setText("");
 		for (int i = 0; i < user.getTasks().size(); i++) {
->>>>>>> ModifyTaskFunctionality
 			TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
 		}
 	}
