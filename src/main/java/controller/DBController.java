@@ -112,7 +112,8 @@ public class DBController {
 	            
 	            conn.close();
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	        	System.out.println(e.getMessage());
+				JOptionPane.showMessageDialog(null, "Some problem occurred with Data Base... try later", "Data Base problem", 0);
 	        }
 	}
 	
@@ -124,7 +125,20 @@ public class DBController {
 	            pstmt.executeUpdate();
 	            conn.close();
 	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
+	        	System.out.println(e.getMessage());
+	        	JOptionPane.showMessageDialog(null, "Some problem occurred with Data Base... try later", "Data Base problem", 0);
 	        }
+	}
+	
+	public void finishTarea(String taskID){
+		String query = "UPDATE Tarea SET Estado='Finalizada' WHERE ID=" + taskID;
+		try(Connection conn = this.connect();
+					PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(query)){
+					pstmt.executeUpdate();
+					conn.close();
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+				JOptionPane.showMessageDialog(null, "Some problem occurred with Data Base... try later", "Data Base problem", 0);	
+			}
 	}
 }

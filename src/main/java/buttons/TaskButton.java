@@ -15,6 +15,7 @@ public class TaskButton extends ButtonPattern{
 	
 	public TaskButton(String title, int x, int y, ButtonDevice device, JPanel view, Task task, User user) {
 		super(title, x, y, device, view);
+		setBounds(x, y, ButtonPattern.WIDTH * 2, ButtonPattern.HEIGHT);
 		this.task = task;
 		this.user = user;
 	}
