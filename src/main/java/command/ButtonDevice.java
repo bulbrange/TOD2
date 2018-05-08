@@ -63,10 +63,7 @@ public class ButtonDevice implements Actions {
 	}
 	
 	public void deleteTask(User user) {
-<<<<<<< HEAD
 
-		System.out.println("DELETE TASK WORKINGGGG");
-=======
 		for(int i = 0; i < user.getTasks().size(); i++){
 			if(user.getTasks().get(i).isSelected()){
 				int answer = JOptionPane.showConfirmDialog(null, "Do you want to remove the task?");
@@ -75,7 +72,7 @@ public class ButtonDevice implements Actions {
 				break;
 			}
 		}
->>>>>>> DeleteTaskFunctionality
+
 		
 	}
 
@@ -139,10 +136,8 @@ public class ButtonDevice implements Actions {
 		if(new FormValidator(input).validateUser()){
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			MainFrame.switchView();
-<<<<<<< HEAD
 
-=======
->>>>>>> DeleteTaskFunctionality
+
 		}
 	}
 	
