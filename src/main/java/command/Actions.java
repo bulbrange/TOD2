@@ -15,9 +15,9 @@ public interface Actions {
 	
 	public void deleteTask(User user);
 	
-	public void finishTask();
+	public void finishTask(User user);
 	
-	public void modifyTask();
+	public void modifyTask(User user);
 	
 	public void exitView();
 
