@@ -74,7 +74,7 @@ public class ButtonDevice implements Actions {
 	public void finishTask(User user) {
 
 
-		System.out.println("FINISH TASK WORKINGGGGGGG");
+		System.out.println("FINISH TASK WORKINGGGGGGGGG");
 
 		System.out.println("FINISH TASK WORKING");
 
