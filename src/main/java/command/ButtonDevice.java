@@ -75,9 +75,9 @@ public class ButtonDevice implements Actions {
 
 	
 	public void finishTask(User user) {
-<<<<<<< HEAD
+
 		System.out.println("FINISH TASK WORKINGGG");
-=======
+
 		System.out.println("FINISH TASK WORKING");
 		for(int i = 0; i < user.getTasks().size(); i++){
 			if(user.getTasks().get(i).isSelected()){
@@ -92,7 +92,7 @@ public class ButtonDevice implements Actions {
 				break;
 			}
 		}
->>>>>>> FinishTaskFunctionality
+
 		
 	}
 
