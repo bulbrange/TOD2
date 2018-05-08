@@ -58,7 +58,12 @@ public class ButtonDevice implements Actions {
 
 	public void deleteTask(User user) {
 
+<<<<<<< HEAD
 		System.out.println("DELETE TASK WORKING");
+=======
+		System.out.println("DELETE TASK WORKINGGGG");
+		
+>>>>>>> CreateFunctionality
 	}
 
 	public void finishTask(User user) {
