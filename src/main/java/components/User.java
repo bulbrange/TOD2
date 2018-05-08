@@ -1,5 +1,6 @@
 package components;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import buttons.TaskButton;
@@ -59,7 +60,7 @@ public class User {
 			}
 			ArrayList<Object> end_date = DBController.getInstance().query(queryFecha_fin, "Fecha_fin");
 			for(int i = 0; i < tasks.size(); i++){
-				if(end_date.get(i) != null)tasks.get(i).setEnd(init_date.get(i).toString());
+				if(end_date.get(i) != null)tasks.get(i).setEnd(end_date.get(i).toString());
 				else tasks.get(i).setEnd("Undefined");
 			}
 			ArrayList<Object> state = DBController.getInstance().query(queryEstado, "Estado");
@@ -81,6 +82,7 @@ public class User {
 										tasks.get(i),
 										this));
 			taskButtons.add(tasks.get(i).getDisplayInfo());
+			if(tasks.get(i).getState().toString() == "Finalizada") taskButtons.get(i).setBackground(Color.CYAN);
 		}
 		taskListener = new ButtonListener(taskButtons);
 	}
