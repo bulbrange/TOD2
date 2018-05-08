@@ -72,7 +72,6 @@ public class User {
 		}
 		ArrayList<ButtonPattern> taskButtons = new ArrayList<ButtonPattern>();
 		for(int i = 0; i < tasks.size(); i++){
-			System.out.println();
 			tasks.get(i).setDisplayInfo(new TaskButton(
 										tasks.get(i).getTitle(),
 										100,

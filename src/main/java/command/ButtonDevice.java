@@ -91,6 +91,7 @@ public class ButtonDevice implements Actions {
 	}
 	
 	public void exitView() {
+		cleanView(TaskPanel.user);
 		MainFrame.switchView();
 		
 	}
@@ -131,12 +132,8 @@ public class ButtonDevice implements Actions {
 		
 		if(new FormValidator(input).validateUser()){
 			JOptionPane.showMessageDialog(null, "<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
-			//TaskButtonPanel.buttons.get(1).
-			//MainFrame.switchView();
-			//AKI KAI KIASK IDAS
-			
-			//TROLLLER
-			System.out.println("ALKSJDHALKSJD");
+			MainFrame.switchView();
+
 		}
 	}
 	
@@ -180,5 +177,13 @@ public class ButtonDevice implements Actions {
 		}
 		user.setTasks();
 		TaskPanel.getInstance().repaint();
+	}
+
+	private void cleanView(User user){
+		TextPanePanel.area.setText("");
+
+		for(int i = 0; i < user.getTasks().size(); i++){
+			TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
+		}
 	}
 }
