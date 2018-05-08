@@ -50,8 +50,8 @@ public class TaskButtonPanel extends JPanel{
 		
 		createTask = new CreateButton("Create",80,10,MainFrame.device,this, TaskPanel.user);
 		deleteTask = new DeleteButton("Delete",240,10,MainFrame.device,this, TaskPanel.user);
-		finishTask = new FinishButton("Finish",440,10,MainFrame.device,this);
-		modifyTask = new ModifyButton("Modify",600,10,MainFrame.device,this);
+		finishTask = new FinishButton("Finish",440,10,MainFrame.device,this, TaskPanel.user);
+		modifyTask = new ModifyButton("Modify",600,10,MainFrame.device,this, TaskPanel.user);
 		
 		buttons = new ArrayList<ButtonPattern>();
 		buttons.add(createTask);

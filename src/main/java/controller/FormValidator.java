@@ -62,7 +62,7 @@ public class FormValidator {
 			e.printStackTrace();
 		}
 		TaskPanel.user = new User(ID, mail, pass);
-		TaskPanel.buttonPanel.getCreateTask().setU(TaskPanel.user);
+		updateTaskPanelButtons();
 		return true;
 	}
 
@@ -86,6 +86,12 @@ public class FormValidator {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	private void updateTaskPanelButtons(){
+		TaskPanel.buttonPanel.getCreateTask().setUser(TaskPanel.user);
+		TaskPanel.buttonPanel.getDeleteTask().setUser(TaskPanel.user);
+		TaskPanel.buttonPanel.getFinishTask().setUser(TaskPanel.user);
+		TaskPanel.buttonPanel.getModifyTask().setUser(TaskPanel.user);
 	}
 	
 }

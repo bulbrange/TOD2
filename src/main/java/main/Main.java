@@ -5,7 +5,7 @@ import view.MainFrame;
 
 public class Main {
 
-	//COMERME LOS HUEVOS
+	//COMERME LOS HUEVOSS
 	
 	public static void main(String[] args) {
 		System.out.println("Opening Main class @ TODO app");
