@@ -57,13 +57,16 @@ public class ButtonDevice implements Actions {
 	}
 
 	public void deleteTask(User user) {
+		for (int i = 0; i < user.getTasks().size(); i++) {
+			if (user.getTasks().get(i).isSelected()) {
+				int answer = JOptionPane.showConfirmDialog(null, "Do you want to remove the task?");
+				if (answer == 0)
+					DBController.getInstance().removeFromTarea(user.getTasks().get(i).getID());
+				updateView(user);
+				break;
+			}
+		}
 
-<<<<<<< HEAD
-		System.out.println("DELETE TASK WORKING");
-=======
-		System.out.println("DELETE TASK WORKINGGGG");
-		
->>>>>>> CreateFunctionality
 	}
 
 	public void finishTask(User user) {
@@ -149,10 +152,7 @@ public class ButtonDevice implements Actions {
 				u.getTasks().get(i).getDisplayInfo().setBackground(Color.GRAY);
 			}
 		}
-		
 	}
-	
-
 
 	private void initLoginProtocol(ArrayList<JTextField> input) {
 
@@ -160,12 +160,6 @@ public class ButtonDevice implements Actions {
 			JOptionPane.showMessageDialog(null,
 					"<html><body>Welcome back!!!<br><br>What TO DO today??<br></html></body>", "Loggin successful", 1);
 			MainFrame.switchView();
-
-
-			
-			MainFrame.switchView();
-			System.out.println("ALKSJDHALKSJD");
-
 		}
 	}
 
@@ -191,7 +185,7 @@ public class ButtonDevice implements Actions {
 		while (input.equals("")) {
 			input = JOptionPane.showInputDialog(null, title);
 			if (input.equals(""))
-				JOptionPane.showMessageDialog(null, "Canï¿½t handle empty input...", "Task creation failure", 0);
+				JOptionPane.showMessageDialog(null, "Can´t handle empty input...", "Task creation failure", 0);
 			if (title.contains("date")) {
 				if (!input.matches("\\d{4}-\\d{2}-\\d{2}")) {
 					JOptionPane.showMessageDialog(null, "Wrong date regex, must be (YYYY-MM-DD)",
@@ -213,7 +207,6 @@ public class ButtonDevice implements Actions {
 		user.setTasks();
 		TaskPanel.getInstance().repaint();
 	}
-
 
 	private void cleanView(User user) {
 		TextPanePanel.area.setText("");
