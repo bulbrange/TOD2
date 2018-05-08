@@ -180,7 +180,7 @@ public class ButtonDevice implements Actions {
 		while (input.equals("")) {
 			input = JOptionPane.showInputDialog(null, title);
 			if (input.equals(""))
-				JOptionPane.showMessageDialog(null, "Can´t handle empty input...", "Task creation failure", 0);
+				JOptionPane.showMessageDialog(null, "Canï¿½t handle empty input...", "Task creation failure", 0);
 			if (title.contains("date")) {
 				if (!input.matches("\\d{4}-\\d{2}-\\d{2}")) {
 					JOptionPane.showMessageDialog(null, "Wrong date regex, must be (YYYY-MM-DD)",
