@@ -57,14 +57,10 @@ public class ButtonDevice implements Actions {
 	}
 
 	public void deleteTask(User user) {
-<<<<<<< HEAD
 
-		for(int i = 0; i < user.getTasks().size(); i++){
-			if(user.getTasks().get(i).isSelected()){
-=======
 		for (int i = 0; i < user.getTasks().size(); i++) {
 			if (user.getTasks().get(i).isSelected()) {
->>>>>>> ModifyTaskFunctionality
+
 				int answer = JOptionPane.showConfirmDialog(null, "Do you want to remove the task?");
 				if (answer == 0)
 					DBController.getInstance().removeFromTarea(user.getTasks().get(i).getID());
@@ -73,24 +69,18 @@ public class ButtonDevice implements Actions {
 			}
 		}
 
-<<<<<<< HEAD
-		
-=======
->>>>>>> ModifyTaskFunctionality
 	}
 
 	public void finishTask(User user) {
-<<<<<<< HEAD
+
 
 		System.out.println("FINISH TASK WORKINGGGGGGG");
 
 		System.out.println("FINISH TASK WORKING");
-		for(int i = 0; i < user.getTasks().size(); i++){
-			if(user.getTasks().get(i).isSelected()){
-=======
+
 		for (int i = 0; i < user.getTasks().size(); i++) {
 			if (user.getTasks().get(i).isSelected()) {
->>>>>>> ModifyTaskFunctionality
+
 				int answer = JOptionPane.showConfirmDialog(null, "Do you want to finish the task?");
 				if (answer == 0) {
 					TextPanePanel.area.setText("");
@@ -103,10 +93,6 @@ public class ButtonDevice implements Actions {
 			}
 		}
 
-<<<<<<< HEAD
-		
-=======
->>>>>>> ModifyTaskFunctionality
 	}
 
 	public void modifyTask(User user) {
@@ -233,16 +219,11 @@ public class ButtonDevice implements Actions {
 		TaskPanel.getInstance().repaint();
 	}
 
-<<<<<<< HEAD
-	private void cleanView(User user){
-		TextPanePanel.area.setText("");
 
-		for(int i = 0; i < user.getTasks().size(); i++){
-=======
 	private void cleanView(User user) {
 		TextPanePanel.area.setText("");
 		for (int i = 0; i < user.getTasks().size(); i++) {
->>>>>>> ModifyTaskFunctionality
+
 			TaskPanel.getInstance().remove(user.getTasks().get(i).getDisplayInfo());
 		}
 	}
