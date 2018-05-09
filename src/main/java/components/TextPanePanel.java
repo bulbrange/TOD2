@@ -26,6 +26,7 @@ public class TextPanePanel extends JPanel{
 		StyleConstants.setAlignment(sa, StyleConstants.ALIGN_JUSTIFIED);
 
 		area.getStyledDocument().setParagraphAttributes(0, 0, sa, false);
+		area.setEditable(false);
 		scroll = new JScrollPane(area);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		add(scroll,BorderLayout.CENTER);
