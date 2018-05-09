@@ -27,7 +27,7 @@ public class ControllerTest {
 			repass.setText("1234");
 			JPasswordField pass = new JPasswordField();
 			pass.setName("Password:");
-			pass.setText("1234");
+			pass.setText("1235");
 			
 			ArrayList<JTextField> inputs = new ArrayList<JTextField>();
 			inputs.add(pass);
